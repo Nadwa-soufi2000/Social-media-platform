@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Logo from "./Logo";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 
 const navVariants = {
   hidden: { opacity: 0, y: -8 },
@@ -22,6 +22,8 @@ const itemVariants = {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [elevated, setElevated] = useState(false);
+  const controls = useAnimation();
 
   const mobileVariants = {
     hidden: { opacity: 0, y: -12 },
@@ -29,12 +31,34 @@ export default function Navbar() {
     exit: { opacity: 0, y: -8, transition: { duration: 0.18 } },
   };
 
+  useEffect(() => {
+    controls.start("show");
+  }, [controls]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const should = window.scrollY > 8;
+      setElevated(should);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    controls.start({
+      boxShadow: elevated ? "0 18px 50px rgba(15,23,42,0.12)" : "0 6px 18px rgba(15,23,42,0.06)",
+      backgroundColor: elevated ? "rgba(255,255,255,0.96)" : "rgba(255,255,255,0.80)",
+      transition: { duration: 0.32, ease: "easeOut" },
+    });
+  }, [controls, elevated]);
+
   return (
     <motion.nav
       className="w-full border-b border-gray-200 bg-white/80 backdrop-blur-xl font-arabic"
       variants={navVariants}
       initial="hidden"
-      animate="show"
+      animate={controls}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <motion.div className="flex items-center gap-3" variants={itemVariants}>
