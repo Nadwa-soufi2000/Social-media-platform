@@ -73,13 +73,13 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-8 lg:flex">
           <motion.a href="#home" className="text-md font-medium text-gray-600 transition hover:text-gray-900" variants={itemVariants} whileHover={{ y: -3, scale: 1.03 }}>
-            الرئيسة
+            الأسعار
           </motion.a>
           <motion.a href="#pricing" className="text-md font-medium text-gray-600 transition hover:text-gray-900" variants={itemVariants} whileHover={{ y: -3, scale: 1.03 }}>
             تسجيل الدخول
           </motion.a>
           <motion.a href="#login" className="text-md font-medium text-gray-600 transition hover:text-gray-900" variants={itemVariants} whileHover={{ y: -3, scale: 1.03 }}>
-             الأسعار
+             الرئيسية
           </motion.a>
         </div>
         <div className="flex items-center gap-3">
