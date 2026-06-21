@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, easeOut, easeInOut } from "framer-motion";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ export default function LoginForm() {
 
   const item = {
     hidden: { opacity: 0, y: 12 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOut } },
   };
 
   return (
@@ -23,18 +23,18 @@ export default function LoginForm() {
         <motion.section
           initial={{ opacity: 0, x: -28 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: easeOut }}
           whileHover={{ scale: 1.01 }}
           className="relative overflow-hidden rounded-[2rem] border border-white/80 bg-white/90 p-8 shadow-2xl shadow-violet-200/20 backdrop-blur-xl h-full"
         >
           <motion.div
             animate={{ opacity: [0.85, 1, 0.85], scale: [0.95, 1.05, 0.95] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 5, repeat: Infinity, ease: easeInOut }}
             className="absolute -top-10 -left-10 h-44 w-44 rounded-full bg-violet-200/30 blur-3xl"
           />
           <motion.div
             animate={{ opacity: [0.8, 1, 0.8], y: [0, -10, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 6, repeat: Infinity, ease: easeInOut }}
             className="absolute -bottom-12 right-8 h-36 w-36 rounded-full bg-cyan-200/20 blur-3xl"
           />
           <div className="relative z-10 flex h-full flex-col justify-between gap-8">
