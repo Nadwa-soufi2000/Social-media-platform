@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Logo from "./Logo";
-import { motion, AnimatePresence, useAnimation } from "framer-motion";
+import { motion, AnimatePresence, useAnimation, easeOut } from "framer-motion";
 import Link from "next/link";
 
 const navVariants = {
@@ -11,7 +11,7 @@ const navVariants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { when: "beforeChildren", staggerChildren: 0.06, ease: "easeOut" },
+    transition: { when: "beforeChildren", staggerChildren: 0.06, ease: easeOut },
   },
 };
 
@@ -50,7 +50,7 @@ export default function Navbar() {
     controls.start({
       boxShadow: elevated ? "0 18px 50px rgba(15,23,42,0.12)" : "0 6px 18px rgba(15,23,42,0.06)",
       backgroundColor: elevated ? "rgba(255,255,255,0.96)" : "rgba(255,255,255,0.80)",
-      transition: { duration: 0.32, ease: "easeOut" },
+      transition: { duration: 0.32, ease: easeOut },
     });
   }, [controls, elevated]);
 
