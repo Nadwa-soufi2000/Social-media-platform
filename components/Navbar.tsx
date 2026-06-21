@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import Logo from "./Logo";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
+import Link from "next/link";
 
 const navVariants = {
   hidden: { opacity: 0, y: -8 },
@@ -72,15 +73,15 @@ export default function Navbar() {
         </motion.div>
 
         <div className="hidden items-center gap-8 lg:flex">
-          <motion.a href="#home" className="text-md font-medium text-gray-600 transition hover:text-gray-900" variants={itemVariants} whileHover={{ y: -3, scale: 1.03 }}>
-            الأسعار
-          </motion.a>
-          <motion.a href="#pricing" className="text-md font-medium text-gray-600 transition hover:text-gray-900" variants={itemVariants} whileHover={{ y: -3, scale: 1.03 }}>
-            تسجيل الدخول
-          </motion.a>
-          <motion.a href="#login" className="text-md font-medium text-gray-600 transition hover:text-gray-900" variants={itemVariants} whileHover={{ y: -3, scale: 1.03 }}>
-             الرئيسية
-          </motion.a>
+          <motion.div variants={itemVariants} whileHover={{ y: -3, scale: 1.03 }}>
+            <Link href="/pricing" className="text-md font-medium text-gray-600 transition hover:text-gray-900">الأسعار</Link>
+          </motion.div>
+          <motion.div variants={itemVariants} whileHover={{ y: -3, scale: 1.03 }}>
+            <Link href="/login" className="text-md font-medium text-gray-600 transition hover:text-gray-900">تسجيل الدخول</Link>
+          </motion.div>
+          <motion.div variants={itemVariants} whileHover={{ y: -3, scale: 1.03 }}>
+            <Link href="/" className="text-md font-medium text-gray-600 transition hover:text-gray-900">الرئيسية</Link>
+          </motion.div>
         </div>
         <div className="flex items-center gap-3">
           <div className="lg:hidden">
